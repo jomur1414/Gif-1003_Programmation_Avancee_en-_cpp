@@ -1,0 +1,26 @@
+#ifndef GUISAAQ_H
+#define GUISAAQ_H
+
+#include <QtGui/QMainWindow>
+#include "ui_guisaaq.h"
+#include <vector>
+#include "Vehicule.h"
+#include "Proprietaire.h"
+using namespace std;
+
+
+class GuiSaaq : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    GuiSaaq(QWidget *parent = 0);
+    ~GuiSaaq();
+
+private:
+    Ui::GuiSaaqClass ui;
+    vector<Vehicule*> m_vVehicules;
+
+};
+
+#endif // GUISAAQ_H

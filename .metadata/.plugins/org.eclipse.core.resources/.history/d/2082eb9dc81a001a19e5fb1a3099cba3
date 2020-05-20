@@ -1,0 +1,49 @@
+#include "ajoutercamiongui.h"
+#include <QtGui/QMessageBox>
+
+ajouterCamionGui::ajouterCamionGui(QWidget *parent)
+    : QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterCamionGui::~ajouterCamionGui()
+{
+
+}
+
+QString ajouterCamionGui::reqNiv(){
+return 	ui.leNiv->text();
+}
+
+QString ajouterCamionGui::reqImmatriculation(){
+return 	ui.leImmatriculation->text();
+}
+
+QString ajouterCamionGui::reqPoids(){
+return 	ui.lePoids->text();
+}
+
+QString ajouterCamionGui::reqNbEssieux(){
+return 	ui.leNbEssieux->text();
+}
+
+//void validerCamion(){
+//	if(reqNiv().isEmpty()){
+//		QString probleme ("Le champ Niv est vide !");
+//		QMessageBox::information(this, "Explosion", probleme);
+//	}
+//	if(reqImmatriculation().isEmpty()){
+//		QString probleme ("Le champ nom est vide !");
+//		QMessageBox::information(this, "Explosion", probleme);
+//	}
+//	if(reqPoids().isEmpty()){
+//		QString probleme ("Le champ nom est vide !");
+//		QMessageBox::information(this, "Explosion", probleme);
+//	}
+//	if(reqNbEssieux().isEmpty()){
+//			QString probleme ("Le champ nom est vide !");
+//			QMessageBox::information(this, "Explosion", probleme);
+//		}
+//	accept();
+//}

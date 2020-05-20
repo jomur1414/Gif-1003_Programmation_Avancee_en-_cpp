@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;source/VehiculeException&apos; to &apos;VehiculeException.h&apos;" description="Rename resource &apos;VehiculeException&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="VehiculeException" name="VehiculeException.h" stamp="1575678271157" updateReferences="true"/>
+</session>

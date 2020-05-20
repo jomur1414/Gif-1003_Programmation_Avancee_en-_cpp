@@ -1,0 +1,19 @@
+#ifndef SUPPRIMEREMPLOYEGUI_H
+#define SUPPRIMEREMPLOYEGUI_H
+
+#include <QtGui/QDialog>
+#include "ui_supprimeremployegui.h"
+
+class SupprimerEmployeGui : public QDialog
+{
+    Q_OBJECT
+
+public:
+    SupprimerEmployeGui(QWidget *parent = 0);
+    ~SupprimerEmployeGui();
+
+private:
+    Ui::SupprimerEmployeGuiClass ui;
+};
+
+#endif // SUPPRIMEREMPLOYEGUI_H

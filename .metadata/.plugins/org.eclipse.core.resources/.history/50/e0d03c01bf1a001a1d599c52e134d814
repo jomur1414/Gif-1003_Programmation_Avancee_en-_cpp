@@ -1,0 +1,23 @@
+#ifndef AJOUTERCAMION_H
+#define AJOUTERCAMION_H
+
+#include <QtGui/QDialog>
+
+#include "ui_ajoutercamion.h"
+
+class ajouterCamion : public QDialog
+{
+    Q_OBJECT
+
+public:
+    ajouterCamion(QWidget *parent = 0);
+    ~ajouterCamion();
+    	QString reqNiv();
+     QString reqImmatriculation();
+     QString reqNbEssieux();
+     QString reqPoids();
+private:
+    Ui::ajouterCamionClass ui;
+};
+
+#endif // AJOUTERCAMION_H

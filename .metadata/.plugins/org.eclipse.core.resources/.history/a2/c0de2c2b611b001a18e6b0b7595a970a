@@ -1,0 +1,48 @@
+#include "ajoutervehiculepromenadegui.h"
+
+ajouterVehiculePromenadeGui::ajouterVehiculePromenadeGui(QWidget *parent)
+    : QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterVehiculePromenadeGui::~ajouterVehiculePromenadeGui()
+{
+
+}
+
+
+QString ajouterVehiculePromenadeGui::reqNiv() {
+return 	ui.leNiv->text();
+}
+
+QString ajouterVehiculePromenadeGui::reqImmatriculation(){
+return 	ui.leImmatriculation->text();
+}
+
+QString ajouterVehiculePromenadeGui::reqNbPlace(){
+return 	ui.lePoids->text();
+}
+
+
+
+
+void ajouterCamionGui::validerCamion(){
+	if(ui.leNiv->text().isEmpty()){
+		QString probleme ("Le champ Niv est vide !");
+		QMessageBox::information(this, "Explosion", probleme);
+	}
+	if(ui.leImmatriculation->text().isEmpty()){
+		QString probleme ("Le champ immatriculation est vide !");
+		QMessageBox::information(this, "Explosion", probleme);
+	}
+	if(ui.lePoids->text().isEmpty()){
+		QString probleme ("Le champ immatriculation est vide !");
+		QMessageBox::information(this, "Explosion", probleme);
+	}
+	if(ui.leNbEssieux->text().isEmpty()){
+		QString probleme ("Le champ immatriculation est vide !");
+		QMessageBox::information(this, "Explosion", probleme);
+	}
+	accept();
+}

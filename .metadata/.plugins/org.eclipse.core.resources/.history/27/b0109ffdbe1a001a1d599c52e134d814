@@ -1,0 +1,12 @@
+#include "ajoutercamion.h"
+
+ajouterCamion::ajouterCamion(QWidget *parent)
+    : QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterCamion::~ajouterCamion()
+{
+
+}

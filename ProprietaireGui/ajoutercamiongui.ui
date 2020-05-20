@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ajouterCamionGuiClass</class>
+ <widget class="QDialog" name="ajouterCamionGuiClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ajouterCamionGui</string>
+  </property>
+  <widget class="QLabel" name="labelNiv">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>53</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>NIV</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelImmatriculation">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Immatriculation</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelPoids">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>130</y>
+     <width>53</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Poids</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelNbEssieux">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>92</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nombre Essieux</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="leNiv">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>20</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="leImmatriculation">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>70</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lePoids">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>120</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="leNbEssieux">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>170</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonOk">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>200</y>
+     <width>80</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ok</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonOk</sender>
+   <signal>clicked()</signal>
+   <receiver>ajouterCamionGuiClass</receiver>
+   <slot>validerCamion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>validerCamion()</slot>
+ </slots>
+</ui>

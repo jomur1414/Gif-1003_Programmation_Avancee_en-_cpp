@@ -1,0 +1,10 @@
+TEMPLATE = app
+TARGET = ProprietaireGui 
+
+QT        += core gui 
+
+HEADERS   += proprietairegui.h
+SOURCES   += main.cpp \
+    proprietairegui.cpp
+FORMS     += proprietairegui.ui    
+RESOURCES +=

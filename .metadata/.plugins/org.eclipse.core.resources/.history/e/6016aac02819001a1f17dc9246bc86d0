@@ -1,0 +1,10 @@
+TEMPLATE = app
+TARGET = GuiSaaq 
+
+QT        += core gui 
+
+HEADERS   += guisaaq.h
+SOURCES   += main.cpp \
+    guisaaq.cpp
+FORMS     += guisaaq.ui    
+RESOURCES +=

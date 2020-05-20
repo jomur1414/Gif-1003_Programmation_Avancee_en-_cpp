@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProprietaireGuiClass</class>
+ <widget class="QMainWindow" name="ProprietaireGuiClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>637</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPlainTextEdit" name="plainTextEditAfficherNom">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>10</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEditAfficherPrenom">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>10</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>70</y>
+      <width>491</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>637</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <widget class="QMenu" name="menuAJouterVehicule">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>AJouterVehicule</string>
+     </property>
+     <addaction name="actionAJouterCamion"/>
+     <addaction name="actionAjouterVehiculePromenade"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="menuAJouterVehicule"/>
+    <addaction name="actionSupprimerVehicule"/>
+    <addaction name="actionQuitter"/>
+   </widget>
+   <addaction name="menuMenu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionSupprimerVehicule">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>SupprimerVehicule</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionAJouterCamion">
+   <property name="text">
+    <string>AJouterCamion</string>
+   </property>
+  </action>
+  <action name="actionAjouterVehiculePromenade">
+   <property name="text">
+    <string>AjouterVehiculePromenade</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionQuitter</sender>
+   <signal>triggered()</signal>
+   <receiver>ProprietaireGuiClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAJouterCamion</sender>
+   <signal>triggered()</signal>
+   <receiver>ProprietaireGuiClass</receiver>
+   <slot>dialogAjouterCamion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAjouterVehiculePromenade</sender>
+   <signal>triggered()</signal>
+   <receiver>ProprietaireGuiClass</receiver>
+   <slot>dialogAjouterVehiculePromenade()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSupprimerVehicule</sender>
+   <signal>triggered()</signal>
+   <receiver>ProprietaireGuiClass</receiver>
+   <slot>dialogSupprimerVehicule()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>ajouterProprietaire()</slot>
+  <slot>dialogAjouterCamion()</slot>
+  <slot>dialogAjouterVehiculePromenade()</slot>
+  <slot>afficherListeVehicule()</slot>
+  <slot>dialogSupprimerVehicule()</slot>
+ </slots>
+</ui>

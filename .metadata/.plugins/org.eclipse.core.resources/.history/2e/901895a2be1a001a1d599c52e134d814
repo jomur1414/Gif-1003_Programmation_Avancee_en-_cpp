@@ -1,0 +1,19 @@
+#ifndef AJOUTERVEHICULEPROMENADE_H
+#define AJOUTERVEHICULEPROMENADE_H
+
+#include <QtGui/QMainWindow>
+#include "ui_ajoutervehiculepromenade.h"
+
+class ajouterVehiculePromenade : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    ajouterVehiculePromenade(QWidget *parent = 0);
+    ~ajouterVehiculePromenade();
+
+private:
+    Ui::ajouterVehiculePromenadeClass ui;
+};
+
+#endif // AJOUTERVEHICULEPROMENADE_H

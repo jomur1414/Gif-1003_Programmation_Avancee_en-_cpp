@@ -1,0 +1,164 @@
+/**
+ * \file gestionImmatriculations.cpp
+ * \brief Implantation de la gestionImmatriculations (le main)
+ * \author Jonathan Murray
+ * \version 1.0
+ */
+
+using namespace std;
+#include <gtest/gtest.h>
+#include <iostream>
+#include "validationFormat.h"
+#include "Camion.h"
+#include "Date.h"
+#include "VehiculePromenade.h"
+#include <vector>
+#include "Proprietaire.h"
+
+using namespace util;
+using namespace saaq;
+
+int main() {
+
+	string immatriculationCamion;
+	string immatriculationVehiculePromenade;
+	string nivCamion;
+	string nivVehiculePromenade;
+	string nouvellePlaque;
+	string nom;
+	string prenom;
+	int nbEssieux;
+	int nbPlaces;
+	int poids;
+
+	bool prenomValide = false;
+	do {
+		cout << "Entrer votre prenom" << endl;
+		cin >> prenom;
+		if (prenom != "") {
+			prenomValide = true;
+		}
+
+	} while (!prenomValide);
+	cin.ignore();
+
+	bool nomValide = false;
+	do {
+		cout << "Entrer votre nom" << endl;
+		cin >> nom;
+		if (nom != "") {
+			nomValide = true;
+		}
+
+	} while (!nomValide);
+	cin.ignore();
+
+	Proprietaire proprietaireUn(nom, prenom);
+
+	bool nivVehiculePromenadeValide = false;
+	do {
+		cout << "Veuillez entrer le  NIV du vehicule de promenade" << endl;
+		cin >> nivVehiculePromenade;
+		if (util::validerNiv(nivVehiculePromenade)) {
+			nivVehiculePromenadeValide = true;
+		}
+	} while (!nivVehiculePromenadeValide);
+
+	cin.ignore();
+
+	bool immatriculationVehiculePromnadeValide = false;
+	do {
+		cout
+				<< "Veuillez entrer le numero d'immatriculation du vehicule de promenade"
+				<< endl;
+
+		getline(cin, immatriculationVehiculePromenade);
+
+		if (validationImmatriculationPromenade(
+				immatriculationVehiculePromenade)) {
+			immatriculationVehiculePromnadeValide = true;
+		}
+
+	} while (!immatriculationVehiculePromnadeValide);
+
+	bool nombrePlaceValide = false;
+	do {
+		cout
+				<< "Veuillez entrer le nombre de place du vehicule (Plus grand que 0)"
+				<< endl;
+		cin >> nbPlaces;
+		if (nbPlaces > 0) {
+			nombrePlaceValide = true;
+		}
+
+	} while (!nombrePlaceValide);
+
+	cin.ignore();
+
+	saaq::VehiculePromenade vehiculeUn = saaq::VehiculePromenade(
+			nivVehiculePromenade, immatriculationVehiculePromenade, nbPlaces);
+	proprietaireUn.ajouterVehicule(vehiculeUn);
+
+	bool nivCamionValide = false;
+	do {
+		cout << "Veuillez entrer le  NIV du camion" << endl;
+		cin >> nivCamion;
+		if (util::validerNiv(nivCamion)) {
+			nivCamionValide = true;
+		}
+
+	} while (!nivCamionValide);
+	cin.ignore();
+
+
+
+	bool immatriculationCamionValide = false;
+	do {
+		cout << "Veuillez entrer le numero d'immatriculation du camion" << endl;
+
+		getline(cin, immatriculationCamion);
+
+		if (util::validationImmatriculationCamion(immatriculationCamion)) {
+			immatriculationCamionValide = true;
+		}
+
+	} while (!immatriculationCamionValide);
+
+	bool poidsValide = false;
+	do {
+		cout << "Veuillez entrer le poids du camion ( plus de 3000 kg )"
+				<< endl;
+		cin >> poids;
+		if (poids > 3000) {
+			poidsValide = true;
+		}
+
+	} while (!poidsValide);
+	cin.ignore();
+
+	bool nbEssieuxValide = false;
+	do {
+		cout << "Veuillez entrer le nombre d'essieux du camion ( 2 ou plus )"
+				<< endl;
+		cin >> nbEssieux;
+		if (nbEssieux >= 2) {
+			nbEssieuxValide = true;
+		}
+
+	} while (!nbEssieuxValide);
+	cin.ignore();
+
+
+
+	saaq::Camion camionUn(nivCamion, immatriculationCamion,
+			poids, nbEssieux);
+
+	proprietaireUn.ajouterVehicule(vehiculeUn);
+	proprietaireUn.ajouterVehicule(camionUn);
+
+	cout << endl;
+	cout << proprietaireUn.reqProprietaireFormate() << endl;
+	cout << endl;
+
+	return 0;
+}

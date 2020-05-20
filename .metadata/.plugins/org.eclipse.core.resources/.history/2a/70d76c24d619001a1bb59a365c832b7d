@@ -1,0 +1,28 @@
+#ifndef AJOUTERPROPRIETAIREGUI_H
+#define AJOUTERPROPRIETAIREGUI_H
+
+#include <QtGui/QDialog>
+//#include <QtGui/QString>
+#include "ui_ajouterproprietairegui.h"
+
+class ajouterProprietaireGui : public QDialog
+{
+    Q_OBJECT
+
+public:
+    ajouterProprietaireGui(QWidget *parent = 0);
+    ~ajouterProprietaireGui();
+    QString reqPrenom();
+    QString reqNom();
+
+private slots :
+	void validerProprietaire();
+
+
+
+private:
+    Ui::ajouterProprietaireGuiClass ui;
+
+};
+
+#endif // AJOUTERPROPRIETAIREGUI_H

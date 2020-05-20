@@ -1,0 +1,30 @@
+#include "ajoutercamiongui.h"
+
+ajouterCamionGui::ajouterCamionGui(QWidget *parent)
+    : QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterCamionGui::~ajouterCamionGui()
+{
+
+}
+
+QString ajouterCamionGui::reqNiv(){
+return 	ui.leNiv->text();
+}
+
+QString ajouterCamionGui::reqImmatriculation(){
+return 	ui.leImmatriculation->text();
+}
+
+QString ajouterCamionGui::reqPoids(){
+return 	ui.lePoids->text();
+}
+
+QString ajouterCamionGui::reqNbEssieux(){
+return 	ui.leNbEssieux->text();
+}
+
+void validerCamion(){}

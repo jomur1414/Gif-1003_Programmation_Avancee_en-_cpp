@@ -1,0 +1,19 @@
+#ifndef GUISAAQ_H
+#define GUISAAQ_H
+
+#include <QtGui/QMainWindow>
+#include "ui_guisaaq.h"
+
+class GuiSaaq : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    GuiSaaq(QWidget *parent = 0);
+    ~GuiSaaq();
+
+private:
+    Ui::GuiSaaqClass ui;
+};
+
+#endif // GUISAAQ_H

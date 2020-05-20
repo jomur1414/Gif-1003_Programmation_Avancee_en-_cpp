@@ -1,0 +1,12 @@
+#include "guisaaq.h"
+
+GuiSaaq::GuiSaaq(QWidget *parent)
+    : QMainWindow(parent)
+{
+	ui.setupUi(this);
+}
+
+GuiSaaq::~GuiSaaq()
+{
+
+}

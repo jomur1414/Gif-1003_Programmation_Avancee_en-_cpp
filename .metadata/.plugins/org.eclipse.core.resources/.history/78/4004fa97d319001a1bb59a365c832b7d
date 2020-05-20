@@ -1,0 +1,23 @@
+#include "ajouterproprietairegui.h"
+
+ajouterProprietaireGui::ajouterProprietaireGui(QWidget *parent)
+    : QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterProprietaireGui::~ajouterProprietaireGui()
+{
+
+}
+
+
+QString reqPrenom(){
+return 	ui.lePrenom->text();
+
+
+}
+QString reqNom(){
+	return ui.leNom->text();
+
+}

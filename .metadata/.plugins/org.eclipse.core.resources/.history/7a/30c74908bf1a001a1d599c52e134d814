@@ -1,0 +1,18 @@
+TEMPLATE = app
+TARGET = ProprietaireGui
+QT += core \
+    gui
+HEADERS += ajoutercamion.h \
+    ajouterproprietairegui.h \
+    proprietairegui.h
+SOURCES += ajoutercamion.cpp \
+    ajouterproprietairegui.cpp \
+    main.cpp \
+    proprietairegui.cpp
+FORMS += ajoutervehiculepromenade.ui \
+    ajoutercamion.ui \
+    ajouterproprietairegui.ui \
+    proprietairegui.ui
+RESOURCES += 
+LIBS += "../source/Debug/libsource.a"
+INCLUDEPATH += "../source/."

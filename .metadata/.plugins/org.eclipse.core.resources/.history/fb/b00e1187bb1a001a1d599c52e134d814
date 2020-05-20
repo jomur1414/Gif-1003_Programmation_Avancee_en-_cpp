@@ -1,0 +1,57 @@
+#include "proprietairegui.h"
+#include <vector>
+#include "Proprietaire.h"
+#include "ajouterproprietairegui.h"
+
+using namespace saaq;
+
+
+ProprietaireGui::ProprietaireGui(QWidget *parent)
+    : QMainWindow(parent)
+{
+	ui.setupUi(this);
+}
+
+ProprietaireGui::~ProprietaireGui()
+{
+
+	for(size_t i = 0; i < m_vVehicules.size(); i++)
+			delete m_vVehicules[i];
+
+}
+
+
+
+void ProprietaireGui::ajouterProprietaire(const std::string& p_nom,
+		const std::string& p_prenom){
+	Proprietaire monNouveauProprietaire(p_nom, p_prenom);
+	std::cout<<monNouveauProprietaire.reqNom()<<std::endl;
+	std::cout<<monNouveauProprietaire.reqPrenom()<<std::endl;
+
+}
+
+void ProprietaireGui::dialogAjouterProprietaire(){
+	ajouterProprietaireGui saisieProprietaire(this);
+	if (saisieProprietaire.exec()){
+		ajouterProprietaire(saisieProprietaire.reqNom().toStdString(),
+				saisieProprietaire.reqPrenom().toStdString());
+
+	}
+}
+
+
+
+void ProprietaireGui::selectionLigneTable(){
+//	int ligne = ui.tableWidget->currentRow();
+	//QTableWidgetItem *tNom = ui.tableWidget->item(ligne,0);
+//	QTableWidgetItem *tPrenom = ui.tableWidget->item(ligne,1);
+	std::vector<Vehicule*>::iterator it;
+	for(it = m_vVehicules.begin(); it < m_vVehicules.end(); it++){
+	//	if((*it)->reqNom() == (*tNom).text().toStdString() && (*it)->reqPrenom() == (*tPrenom).text().toStdString())
+		{
+			ui.textBrowser->setText((*it)->reqProprietaireFormate().c_str());
+		}
+	}
+}
+
+

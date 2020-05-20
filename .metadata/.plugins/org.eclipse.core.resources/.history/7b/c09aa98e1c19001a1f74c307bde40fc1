@@ -1,0 +1,263 @@
+/*
+ /*
+ * \file Proprietaire.cpp
+ * \brief Implémentation de la classe Proprietaire
+ * \author Jonathan Murray
+ * \version 0.1
+ * \date 2019-11-25
+ */
+
+#include "Proprietaire.h"
+using namespace std;
+#include<iostream>
+#include <sstream>
+#include "ContratException.h"
+#include "Vehicule.h"
+#include "Camion.h"
+#include "VehiculeException.h"
+#include <vector>
+//#include "VehiculeException.h"
+
+using namespace saaq;
+
+namespace saaq {
+
+/**
+ * \brief Constructeur avec paramètre.
+ *  Création d'un objet Proprietaire à partir de valeurs passées en paramètres.
+ * \param[in] p_nom est un string qui represente le nom
+ * \param[in] p_prenom est un string qui represente le prenom
+ * \pre p_nom est non vide
+ * \pre p_prenomn est non vide
+ * \post m_immatriculation prend la valeur de p_immatriculation
+ * \post m_niv p rend la valeur de p_niv
+ */
+
+Proprietaire::Proprietaire(const std::string& p_nom,
+		const std::string& p_prenom) :
+		m_nom(p_nom), m_prenom(p_prenom) {
+
+	PRECONDITION(reqNom() != "");
+	PRECONDITION(reqPrenom() != "");
+
+	POSTCONDITION(reqNom() == p_nom);
+	POSTCONDITION(reqPrenom() == p_prenom);
+
+	INVARIANTS();
+
+}
+
+//Proprietaire::Proprietaire(const Proprietaire& p_proprietaire) :
+//	m_nom(p_proprietaire.m_nom), m_prenom(p_proprietaire.m_prenom){
+////PRECONDITION(reqNom() != "");
+////PRECONDITION(reqPrenom() != "");
+////
+////POSTCONDITION(reqNom() == p_nom);
+////POSTCONDITION(reqPrenom() == p_prenom);
+////
+////INVARIANTS();
+//for (int i = 0; i < (int) m_vVehicules.size(); i++) {
+//p_proprietaire = new Proprietaire[m_vVehicules[i]];
+//
+//}
+//
+//
+//}
+
+
+
+
+
+Proprietaire::~Proprietaire() {
+
+
+	std::vector<Vehicule *>::const_iterator it;
+	for(it =  m_vVehicules.begin(); it < m_vVehicules.end();it++)
+	{
+		delete (*it);
+		it = m_vVehicules.erase(it);
+	}
+
+//
+//	for (unsigned i = 0; i < m_vVehicules.size(); i++)
+//	{
+//		delete m_vVehicules[i];
+//
+//	}
+
+
+}
+
+
+
+
+
+
+
+Proprietaire::Proprietaire(const Proprietaire& p_proprietaire):
+	m_nom(p_proprietaire.m_nom), m_prenom(p_proprietaire.m_prenom){
+
+
+
+
+
+for (unsigned i = 0; i < m_vVehicules.size(); i++)
+	{
+	delete m_vVehicules[i];
+
+	}
+
+//std::vector<Vehicule*>m_vVehicules2(m_vVehicules);
+
+for (unsigned i = 0; i < m_vVehicules.size(); i++)
+	{
+
+	m_vVehicules[i] = p_proprietaire.m_vVehicules[i];
+
+
+
+
+
+}
+}
+
+//const Proprietaire& operator= (const Proprietaire& p_proprietaire){
+//
+//	if (this == &p_proprietaire) {
+//	        return (*this);
+//	    }
+//
+//	for (unsigned i = 0; i < m_vVehicules.size(); i++)
+//		{
+//			delete m_vVehicules[i];
+//		}
+//
+//	for (unsigned i = 0; i < m_vVehicules.size(); i++)
+//		{
+//
+//		m_vVehicules[i] = p_proprietaire.m_vVehicules[i];
+//}
+//}
+
+/**
+ * \brief Accesseur nom du proprietaire
+ * \return le nom de proprietaire
+ */
+
+const std::string& Proprietaire::reqNom() const {
+
+
+
+	return m_nom;
+}
+/**
+ * \brief Accesseur prenom du proprietaire
+ * \return le prenom de proprietaire
+ */
+const std::string& Proprietaire::reqPrenom() const {
+	return m_prenom;
+}
+
+/**
+ * \brief Methode qui permet d'ajouter dans un vecteur les nouveaux vehicules du proprietaire
+ */
+
+void Proprietaire::ajouterVehicule(const Vehicule& p_nouveauVehicule) {
+
+
+
+try{
+	VehiculeEstDejaPresent(p_nouveauVehicule.reqNiv());
+
+	if(VehiculeEstDejaPresent(p_nouveauVehicule.reqNiv())){
+
+		throw VehiculeDejaPresentException(p_nouveauVehicule.reqVehiculeFormate());
+		}
+	m_vVehicules.push_back(p_nouveauVehicule.clone());
+	}
+catch (VehiculeDejaPresentException exceptionGenere)
+{
+
+}
+}
+
+
+void Proprietaire::supprimerVehicule (const string& p_niv){
+
+	try{
+		VehiculeEstDejaPresent(p_niv);
+
+		if(VehiculeEstDejaPresent(p_niv)){
+			throw VehiculeAbsentException("Le vehicule n'existe pas");
+			}
+		std::vector<Vehicule*>::iterator it;
+		for(it =  m_vVehicules.begin(); it < m_vVehicules.end();it++){
+			if((*it)->reqNiv()== p_niv){
+				delete (*it);
+		it = m_vVehicules.erase(it);}
+	}
+	}
+	catch (VehiculeAbsentException exceptionGenere)
+	{
+
+	}
+
+}
+}
+
+
+bool Proprietaire::VehiculeEstDejaPresent (const string& p_niv){
+
+	bool vehiculePresent = false;
+
+	for (unsigned i = 0; i < m_vVehicules.size(); i++)
+		{
+			if(m_vVehicules[i]->reqNiv()== p_niv)
+			{
+				vehiculePresent = true;
+		}		}
+
+
+		return vehiculePresent;
+
+}
+
+
+
+
+
+
+/**
+ * \brief Affichage les informations du camion
+ * \return pour chaque VEhicule le niv, la plaque, la date de creation et si applicable, le nombre d'essieux, le poids, la tarification et le nombre de place
+ */
+
+std::string Proprietaire::reqProprietaireFormate() const {
+
+	std::ostringstream os;
+
+	os << "Proprietaire " << endl;
+	os << "--------------------------" << "\n";
+	os << "Nom : " << reqNom() << endl;
+	os << "Prenom : " << reqPrenom() << endl;
+	for (int i = 0; i < (int) m_vVehicules.size(); i++) {
+		os << "---------------------" << endl;
+		os << m_vVehicules[i]->reqVehiculeFormate();
+		os << endl;
+	}
+
+	return os.str();
+}
+
+
+
+/**
+ * \brief Vérifier les invariants de classe
+ */
+
+void Proprietaire::verifieInvariant() const {
+	INVARIANT(reqNom() != "");
+	INVARIANT(reqPrenom() != "");
+}
+
+}

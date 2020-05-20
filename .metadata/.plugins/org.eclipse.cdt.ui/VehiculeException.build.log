@@ -1,0 +1,18 @@
+19:21:26 **** Incremental Build of configuration Debug for project VehiculeException ****
+make all 
+Building file: ../VehiculeAbsentException.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++1y -I"/home/etudiant/TP4/source" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"VehiculeAbsentException.d" -MT"VehiculeAbsentException.o" -o "VehiculeAbsentException.o" "../VehiculeAbsentException.cpp"
+Finished building: ../VehiculeAbsentException.cpp
+ 
+Building target: VehiculeException
+Invoking: GCC C++ Linker
+g++ -L"/home/etudiant/TP4/source/Debug" -o "VehiculeException"  ./VehiculeAbsentException.o ./VehiculeDejaPresentException.o ./VehiculeException.o   -lsource
+/usr/lib/gcc/i686-linux-gnu/7/../../../i386-linux-gnu/Scrt1.o : Dans la fonction « _start » :
+(.text+0x28) : référence indéfinie vers « main »
+collect2: error: ld returned 1 exit status
+makefile:44: recipe for target 'VehiculeException' failed
+make: *** [VehiculeException] Error 1
+
+19:21:27 Build Finished (took 887ms)
+

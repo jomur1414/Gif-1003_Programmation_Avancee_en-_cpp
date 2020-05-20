@@ -1,0 +1,10 @@
+15:41:29 **** Incremental Build of configuration Debug for project main ****
+make all 
+Building target: main
+Invoking: GCC C++ Linker
+g++ -L"/home/etudiant/TP3/source/Debug" -o "main"  ./gestionImmatriculations.o   -lgtest -lgtest_main -lsource -lpthread
+Finished building target: main
+ 
+
+15:41:29 Build Finished (took 355ms)
+

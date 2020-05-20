@@ -1,0 +1,75 @@
+/**
+ * \file Vehicule.h
+ * \brief Fichier qui contient l'interface de la classe Vehicule qui sert à la modificaiton des objets véhicules
+ * \author Jonathan Murray
+ * \version 1.0
+ */
+
+#ifndef SRC_VEHICULE_H_
+#define SRC_VEHICULE_H_
+#include <string>
+#include "Date.h"
+#include <gtest/gtest.h>
+#include "ContratException.h"
+
+using namespace util;
+
+
+
+
+
+namespace saaq {
+
+/**
+ * \class Vehicule
+ * \brief Cette classe permet de créer un objet véhicule et de modifier le plaque d'immatriculation \n
+ * 		  Elle peut également servir à modifier une plaque d'immatriculation d'un véhicule créer préalablement
+ *
+ *	    <p>
+ *	    La classe ajoute la date de d'enregistrement du véhicule automatiquement
+ *
+ *     Attributs: \n
+ *     string m_niv : le NIV du véhicule \n
+ *     m_immatriculation : le numéro de plaque d'immatriculation
+ */
+class Vehicule {
+
+public:
+
+
+
+	Vehicule(const std::string p_niv, const std::string p_immatriculation );
+
+	//virtual ~Vehicule();
+	virtual ~Vehicule(){};
+
+	const std::string& reqImmatriculation() const;
+	void asgImmatriculation(const std::string& p_immatriculation);
+
+	const std::string& reqNiv() const;
+
+	virtual std::string reqVehiculeFormate() const;
+
+	const util::Date reqDateEnregistrement() const;
+
+	void asgDateEnregistrement(util::Date dateEnregistrement);
+
+	bool operator ==(const Vehicule& p_vehicule) const;
+
+	virtual Vehicule* clone() const = 0;
+
+	virtual double tarificationAnnuelle() const = 0 ;
+
+protected:
+	std::string m_immatriculation; // pour etre capable d'aller chercher ave asgImmatriculation
+	virtual void verifieInvariant() const;
+
+private:
+	std::string m_niv;
+	util::Date m_dateEnregistrement;
+
+
+
+};
+}
+#endif /* SRC_VEHICULE_H_ */

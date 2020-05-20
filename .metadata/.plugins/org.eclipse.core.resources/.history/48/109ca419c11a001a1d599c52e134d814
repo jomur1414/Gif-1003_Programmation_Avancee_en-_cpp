@@ -1,0 +1,19 @@
+#ifndef AJOUTERCAMIONGUI_H
+#define AJOUTERCAMIONGUI_H
+
+#include <QtGui/QDialog>
+#include "ui_ajoutercamiongui.h"
+
+class ajouterCamionGui : public QDialog
+{
+    Q_OBJECT
+
+public:
+    ajouterCamionGui(QWidget *parent = 0);
+    ~ajouterCamionGui();
+
+private:
+    Ui::ajouterCamionGuiClass ui;
+};
+
+#endif // AJOUTERCAMIONGUI_H

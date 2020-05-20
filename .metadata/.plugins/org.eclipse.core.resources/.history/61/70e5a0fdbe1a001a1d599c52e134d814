@@ -1,0 +1,23 @@
+#include "ajoutercamion.h"
+
+ajouterCamion::ajouterCamion(QWidget *parent)
+    : QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterCamion::~ajouterCamion()
+{
+
+}
+
+
+QString ajouterProprietaireGui::reqPrenom(){
+return 	ui.lePrenom->text();
+
+
+}
+QString ajouterProprietaireGui::reqNom(){
+	return ui.leNom->text();
+
+}

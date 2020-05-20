@@ -1,0 +1,9 @@
+14:51:59 **** Build of project ProprietaireGui ****
+make debug 
+make -f Makefile.Debug
+make[1] : on entre dans le répertoire « /home/etudiant/Bureau/tp4_jo/ProprietaireGui »
+make[1]: rien à faire pour « first ».
+make[1] : on quitte le répertoire « /home/etudiant/Bureau/tp4_jo/ProprietaireGui »
+
+14:51:59 Build Finished (took 227ms)
+

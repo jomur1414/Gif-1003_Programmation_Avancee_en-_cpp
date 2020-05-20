@@ -1,0 +1,12 @@
+#include "ajoutervehiculepromenade.h"
+
+ajouterVehiculePromenade::ajouterVehiculePromenade(QWidget *parent)
+    : QMainWindow(parent)
+{
+	ui.setupUi(this);
+}
+
+ajouterVehiculePromenade::~ajouterVehiculePromenade()
+{
+
+}

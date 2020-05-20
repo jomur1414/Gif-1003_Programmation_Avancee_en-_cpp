@@ -1,0 +1,229 @@
+/*
+ * Proprietaire_Testeur.cpp
+ *
+ *  Created on: 2019-11-25
+ *      Author: etudiant
+ */
+
+#include<gtest/gtest.h>
+#include "Proprietaire.h"
+#include <iostream>
+#include <sstream>
+#include "Camion.h"
+#include "Vehicule.h"
+#include "VehiculePromenade.h"
+using namespace std;
+using namespace saaq;
+
+/*
+ * \brief Test du constructeur
+ * Condition valide : objet Proprietaire initialiser et l'assignation des attributs de du proprietaire sont valides
+ * Condition invalide : attributs vide
+ */
+
+TEST(Proprietaire, TestInitialisationVehiculePromenade) {
+
+	Proprietaire unProprietaire("Murray", "Jonathan");
+
+	ASSERT_EQ("Jonathan", unProprietaire.reqPrenom());
+	ASSERT_EQ("Murray", unProprietaire.reqNom());
+}
+// TEST pour les cas invalides
+TEST(Proprietaire, ConstructeurNomVide) {
+	ASSERT_THROW(Proprietaire unProprietaire ("","Jonathan"),
+			PreconditionException);
+}
+
+TEST(Proprietaire, ConstructeurPrenomVide) {
+
+	ASSERT_THROW(Proprietaire unProprietaire ("Murray", ""),
+			PreconditionException);
+}
+
+
+TEST(Proprietaire,reqProprietaireFormat)
+{
+	Proprietaire unProprietaire("Murray", "Jonathan");
+	std::ostringstream os;
+
+		os << "Proprietaire "  << endl;
+		os << "--------------------------" << "\n";
+		os << "Nom : " << unProprietaire.reqNom() << endl;
+	 os << "Prenom : " << unProprietaire.reqPrenom()  << endl;
+
+	ASSERT_EQ(os.str(),unProprietaire.reqProprietaireFormate());
+}
+
+
+
+
+
+
+
+
+/**
+ * \brief Création d'une fixture à utiliser pour les méthodes public de la classe de proprietaire
+ */
+
+class unProprietaire: public ::testing::Test {
+public:
+	unProprietaire() :
+			t_proprietaire("Murray", "Jonathan") {
+	}
+	;
+	Proprietaire t_proprietaire;
+
+
+
+
+
+
+
+
+};
+
+/**
+ * \test Test de la méthode reqPrenom()
+ *
+ *     Cas valide: vérifier le retour du prenom du proprietaire
+ *     Cas invalide: aucun.
+ */
+TEST_F(unProprietaire, reqPrenom) {
+	ASSERT_EQ("Jonathan", t_proprietaire.reqPrenom());
+}
+/**
+ * \test Test de la méthode reqNom()
+ *
+ *     Cas valide: vérifier le retour du nom du proprietaire
+ *     Cas invalide: aucun.
+ */
+TEST_F(unProprietaire, reqNom) {
+	ASSERT_EQ("Murray", t_proprietaire.reqNom());
+}
+
+
+
+TEST_F(unProprietaire, ajouterVehiculeCamionEtVehiculePromenade)
+{
+
+	Camion CamionUn("1HTMKADN43H561298", "L032006", 6500, 4);
+	VehiculePromenade VehiculePromenadeUn("3VWFE21C04M000001", "IFT 006", 7);
+	t_proprietaire.ajouterVehicule(VehiculePromenadeUn);
+	t_proprietaire.ajouterVehicule(CamionUn);
+
+	std::ostringstream os;
+	os<<"Proprietaire \n" ;
+	os<<"--------------------------\n";
+	os<<"Nom : "<<t_proprietaire.reqNom()<<"\n";
+	os<<"Prenom : " <<t_proprietaire.reqPrenom()<<"\n";
+	os<<"---------------------\n";
+	os<<"Numero de serie : "<< VehiculePromenadeUn.reqNiv()<<"\n";
+	os<<"Numero d'immatriculation :" << VehiculePromenadeUn.reqImmatriculation()<<"\n";
+	os<<"Date d'enregistrement :"<< VehiculePromenadeUn.reqDateEnregistrement()<<"\n";
+	os<<"nombre de place : " << VehiculePromenadeUn.reqNbPlaces()<< "\n";
+	os<<"tarif : " << VehiculePromenadeUn.tarificationAnnuelle() <<"$\n";
+	os<<"---------------------\n";
+	os<<"Numero de serie : "<< CamionUn.reqNiv()<<"\n";
+	os<<"Numero d'immatriculation :"<< CamionUn.reqImmatriculation()<<"\n";
+	os<<"Date d'enregistrement :"<< CamionUn.reqDateEnregistrement()<<"\n";
+	os<<"nombre d'essieux: "<< CamionUn.reqNbEssieux()<<"\n";
+	os<<"poids : "<< CamionUn.reqPoids()<<"kg\n";
+	os<<"tarif : "<< CamionUn.tarificationAnnuelle() <<"$\n";
+
+
+	ASSERT_EQ(os.str(), t_proprietaire.reqProprietaireFormate());
+
+}
+
+TEST_F(unProprietaire, supprimerVehicule)
+{
+
+	Camion CamionUn("1HTMKADN43H561298", "L032006", 6500, 4);
+	VehiculePromenade VehiculePromenadeUn("3VWFE21C04M000001", "IFT 006", 7);
+	t_proprietaire.ajouterVehicule(VehiculePromenadeUn);
+	t_proprietaire.ajouterVehicule(CamionUn);
+
+	t_proprietaire.supprimerVehicule(CamionUn.reqNiv());
+
+
+	std::ostringstream oss;
+	oss<<"Proprietaire \n" ;
+	oss<<"--------------------------\n";
+	oss<<"Nom : "<<t_proprietaire.reqNom()<<"\n";
+	oss<<"Prenom : " <<t_proprietaire.reqPrenom()<<"\n";
+	oss<<"---------------------\n";
+	oss<<"Numero de serie : "<< VehiculePromenadeUn.reqNiv()<<"\n";
+	oss<<"Numero d'immatriculation :" << VehiculePromenadeUn.reqImmatriculation()<<"\n";
+	oss<<"Date d'enregistrement :"<< VehiculePromenadeUn.reqDateEnregistrement()<<"\n";
+	oss<<"nombre de place : " << VehiculePromenadeUn.reqNbPlaces()<< "\n";
+	oss<<"tarif : " << VehiculePromenadeUn.tarificationAnnuelle() <<"$\n";
+
+	ASSERT_EQ(oss.str(), t_proprietaire.reqProprietaireFormate());
+
+}
+
+
+// la fonction est prive donc utiliser friend ou dequoi du genre
+
+TEST_F(unProprietaire, vehiculeDejaPresent)
+{
+
+	Camion CamionUn("1HTMKADN43H561298", "L032006", 6500, 4);
+	VehiculePromenade VehiculePromenadeUn("3VWFE21C04M000001", "IFT 006", 7);
+	Camion CamionDeux("1HTMKADN43H561298", "L037777", 4500, 4);
+	t_proprietaire.ajouterVehicule(VehiculePromenadeUn);
+	t_proprietaire.ajouterVehicule(CamionUn);
+	t_proprietaire.ajouterVehicule(CamionDeux);
+	//  meme en l'ajoute on devrait voir que cest bien la sortie suivante sans le 3e vehicule
+
+
+	std::ostringstream os;
+	os<<"Proprietaire \n" ;
+	os<<"--------------------------\n";
+	os<<"Nom : "<<t_proprietaire.reqNom()<<"\n";
+	os<<"Prenom : " <<t_proprietaire.reqPrenom()<<"\n";
+	os<<"---------------------\n";
+	os<<"Numero de serie : "<< VehiculePromenadeUn.reqNiv()<<"\n";
+	os<<"Numero d'immatriculation :" << VehiculePromenadeUn.reqImmatriculation()<<"\n";
+	os<<"Date d'enregistrement :"<< VehiculePromenadeUn.reqDateEnregistrement()<<"\n";
+	os<<"nombre de place : " << VehiculePromenadeUn.reqNbPlaces()<< "\n";
+	os<<"tarif : " << VehiculePromenadeUn.tarificationAnnuelle() <<"$\n";
+	os<<"---------------------\n";
+	os<<"Numero de serie : "<< CamionUn.reqNiv()<<"\n";
+	os<<"Numero d'immatriculation :"<< CamionUn.reqImmatriculation()<<"\n";
+	os<<"Date d'enregistrement :"<< CamionUn.reqDateEnregistrement()<<"\n";
+	os<<"nombre d'essieux: "<< CamionUn.reqNbEssieux()<<"\n";
+	os<<"poids : "<< CamionUn.reqPoids()<<"kg\n";
+	os<<"tarif : "<< CamionUn.tarificationAnnuelle() <<"$\n";
+
+
+
+	ASSERT_EQ(oss.str(), t_proprietaire.reqProprietaireFormate());
+
+
+}
+
+
+//TEST_F(unProprietaire, ajouterVehiculeCamion)
+//{
+//
+//	Camion CamionUn("1HTMKADN43H561298", "L032006", 4250, 4);
+//	t_proprietaire.ajouterVehicule(CamionUn);
+//
+//	std::ostringstream os;
+//
+//	os << "Proprietaire " << endl;
+//	os << "--------------------------" << "\n";
+//	os << "Nom : " << t_proprietaire.reqNom() << endl;
+//	os << "Prenom : " << t_proprietaire.reqPrenom() << endl;
+//	os << "---------------------";
+//	os << "Numero de serie :\n"<<endl;
+//
+//	os  << CamionUn.reqNiv() << "\n"
+//				<< "nombre d'essieux: " << CamionUn.reqNbEssieux() << "\n" << "poids : "
+//				<< CamionUn.reqPoids() << "kg" << "\n" << "tarif : " << CamionUn.tarificationAnnuelle()
+//				<< "$";
+//
+//	ASSERT_EQ(os.str(), t_proprietaire.reqProprietaireFormate());
+//}
+
